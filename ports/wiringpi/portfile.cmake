@@ -1,19 +1,31 @@
 
 include(vcpkg_common_functions)
+
+vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
+
 vcpkg_from_github(
-        OUT_SOURCE_PATH SOURCE_PATH
-        REPO bramburn/WiringPi
-        REF master
-        SHA512 af5ea614734a8506bf89b25cd437559f10e4229c1273aa376172a2274a532e3bee6357cb44eb4f3d38d4143a79a841e9512f002e6ccf4091989a3ffa7e010785
+  OUT_SOURCE_PATH SOURCE_PATH
+  REPO bramburn/wiringpi
+  REF v2.6.1
+  SHA512 d8bd44439100772929eb8a4eb4aebfd66fa54562c838eb4c081a382dc1d73c545faa6d9675e320864d9b533e4a0c4a673e44058c7f643ccd56ec90830cdfaf45
+  HEAD_REF master
 )
 
+
+set(CMAKE_CXX_COMPILER "/usr/bin/arm-linux-gnueabihf-g++")
+set(CMAKE_C_COMPILER "/usr/bin/arm-linux-gnueabihf-gcc")
+
+## Copy default files
+file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
+
 vcpkg_configure_cmake(
-        SOURCE_PATH ${SOURCE_PATH}
+    SOURCE_PATH ${SOURCE_PATH}
+    OPTIONS_RELEASE -DINSTALL_HEADERS=ON
+    OPTIONS_DEBUG -DINSTALL_HEADERS=OFF
 
 )
 
 vcpkg_install_cmake()
-
 
 # # Handle copyright
 file(INSTALL ${SOURCE_PATH}/COPYING.LESSER DESTINATION ${CURRENT_PACKAGES_DIR}/share/wiringpi/copyright)
