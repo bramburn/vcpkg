@@ -9,6 +9,8 @@ vcpkg_from_github(
   SHA512 d8bd44439100772929eb8a4eb4aebfd66fa54562c838eb4c081a382dc1d73c545faa6d9675e320864d9b533e4a0c4a673e44058c7f643ccd56ec90830cdfaf45
   HEAD_REF master
 )
+set(CMAKE_CXX_COMPILER "/usr/bin/arm-linux-gnueabihf-g++")
+set(CMAKE_C_COMPILER "/usr/bin/arm-linux-gnueabihf-gcc")
 
 ## Copy default files
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
