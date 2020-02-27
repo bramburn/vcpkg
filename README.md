@@ -79,3 +79,70 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 ## License
 
 Code licensed under the [MIT License](LICENSE.txt).
+
+
+## installation
+
+To install you need to run the following
+
+Download the clone script here:
+
+```shell script
+git clone https://github.com/bramburn/vcpkg.git
+```
+
+Then you need to run the following code to install the system
+
+```shell script
+./bootstrap-vcpkg.sh -useSystemBinaries
+```
+
+## Configuration
+
+As we have installed our own arm-rasp triplet we need install the package into the arm-rasp.
+
+Part of build you need to do the following
+
+### Step 1
+
+First, create a folder to contain your custom triplets:
+Start off by creating a custom build
+
+```shell script
+~/vcpkg$ mkdir ../custom-triplets
+```
+
+### Step 2
+
+Now create the raspberry PI cmake
+
+```shell script
+~/vcpkg$ cp ./triplets/arm-uwp.cmake ../custom-triplets/arm-rasp.cmake
+```
+
+### Step 3
+
+Edit the new Cmake file using the following
+
+```cmake
+ set(VCPKG_TARGET_ARCHITECTURE arm)
+ set(VCPKG_CRT_LINKAGE dynamic)
+ set(VCPKG_LIBRARY_LINKAGE dynamic)
+ set(VCPKG_CMAKE_SYSTEM_NAME Linux)
+ set(CMAKE_CXX_COMPILER "/usr/bin/arm-linux-gnueabihf-g++")
+ set(CMAKE_C_COMPILER "/usr/bin/arm-linux-gnueabihf-gcc")
+```
+
+### Step 4
+
+Call the `./vcpkg` on your debian so that you can build the c++ files on your Debian WSL.
+
+```shell script
+./vcpkg install python3:arm-rasp --overlay-triplets=../custom-triplets/
+```
+
+But if you're running it on your raspberry pi you can just run it as follows:
+
+```shell script
+./vcpkg install wiringpi
+```
