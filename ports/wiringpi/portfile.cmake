@@ -1,8 +1,10 @@
 
 include(vcpkg_common_functions)
 if (NOT VCPKG_TARGET_ARCHITECTURE STREQUAL "arm")
-    message(FATAL_ERROR "You must compile on arm")
+    message(FATAL_ERROR "You must compile on arm architecture. Please ensure VCPKG_TARGET_ARCHITECTURE is set to arm")
 endif ()
+
+## define the toolchain file to
 set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/armCMAKE.cmake)
 vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
