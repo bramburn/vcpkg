@@ -81,7 +81,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 Code licensed under the [MIT License](LICENSE.txt).
 
 
-## installation
+## Installation
 
 To install you need to run the following
 
@@ -91,9 +91,19 @@ Download the clone script here:
 git clone https://github.com/bramburn/vcpkg.git
 ```
 
+### Raspberry PI
+
+```shell script
+cd vcpkg
+./bootstrap-vcpkg.sh
+```
+
+### all other system
+
 Then you need to run the following code to install the system
 
 ```shell script
+cd vcpkg
 ./bootstrap-vcpkg.sh -useSystemBinaries
 ```
 
@@ -145,4 +155,25 @@ But if you're running it on your raspberry pi you can just run it as follows:
 
 ```shell script
 ./vcpkg install wiringpi
+```
+
+
+### Cmake module
+To enable you to work on cmake and to enable
+
+```cmake
+# THIS INCLUDES THE REVISION TO WORK ON THE DEBIAN BUILD
+
+find_library(wiringpi_LIBRARY libwiringPi.so
+        PATH_SUFFIXES lib
+        PATHS /usr/local
+        )
+
+message(STATUS "Loading findingwiring --- ${wiringpi_LIBRARY}")
+find_path(wiringpi_INCLUDE_DIR wiringPi.h wiringPiI2C.h
+        PATH_SUFFIXES include
+        PATHS /usr/local
+        )
+
+MESSAGE(STATUS "The include folder for wiringpi is ${wiringpi_INCLUDE_DIR}")
 ```
