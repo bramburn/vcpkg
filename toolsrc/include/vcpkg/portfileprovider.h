@@ -4,7 +4,7 @@
 #include <vcpkg/base/util.h>
 #include <vcpkg/sourceparagraph.h>
 #include <vcpkg/vcpkgpaths.h>
-#include <cctype>
+#include <algorithm>
 
 namespace vcpkg::PortFileProvider
 {
@@ -13,6 +13,7 @@ namespace vcpkg::PortFileProvider
         virtual ExpectedS<const SourceControlFileLocation&> get_control_file(const std::string& src_name) const = 0;
         virtual std::vector<const SourceControlFileLocation*> load_all_control_files() const = 0;
     };
+    int case_insensitive_match(string s1, string s2);
 
     struct MapPortFileProvider : Util::ResourceBase, PortFileProvider
     {

@@ -89,7 +89,7 @@ namespace vcpkg::PortFileProvider
                 auto found_scf = Paragraphs::try_load_port(filesystem, ports_dir / spec);
                 if (auto scf = found_scf.get())
                 {
-                    if (tolower(scf->get()->core_paragraph->name) == spec)
+                    if (case_insensitive_match(scf->get()->core_paragraph->name,spec))
                     {
                         auto it = cache.emplace(std::piecewise_construct,
                                                 std::forward_as_tuple(spec),
@@ -161,4 +161,14 @@ namespace vcpkg::PortFileProvider
         }
         return ret;
     }
+    int case_insensitive_match(string s1, string s2) {
+        //convert s1 and s2 into lower case strings
+        transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+        transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+        if(s1.compare(s2) == 0)
+            return 1; //The strings are same
+        return 0; //not matched
+    }
 }
+
+
