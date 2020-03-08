@@ -5,37 +5,34 @@
 #include <vcpkg/sourceparagraph.h>
 #include <vcpkg/vcpkgpaths.h>
 
-
-namespace vcpkg::PortFileProvider {
-    struct PortFileProvider {
-        virtual ExpectedS<const SourceControlFileLocation &> get_control_file(const std::string &src_name) const = 0;
-
-        virtual std::vector<const SourceControlFileLocation *> load_all_control_files() const = 0;
+namespace vcpkg::PortFileProvider
+{
+    struct PortFileProvider
+    {
+        virtual ExpectedS<const SourceControlFileLocation&> get_control_file(const std::string& src_name) const = 0;
+        virtual std::vector<const SourceControlFileLocation*> load_all_control_files() const = 0;
     };
 
-
-    struct MapPortFileProvider : Util::ResourceBase, PortFileProvider {
-        explicit MapPortFileProvider(const std::unordered_map <std::string, SourceControlFileLocation> &map);
-
-        ExpectedS<const SourceControlFileLocation &> get_control_file(const std::string &src_name) const override;
-
-        std::vector<const SourceControlFileLocation *> load_all_control_files() const override;
+    struct MapPortFileProvider : Util::ResourceBase, PortFileProvider
+    {
+        explicit MapPortFileProvider(const std::unordered_map<std::string, SourceControlFileLocation>& map);
+        ExpectedS<const SourceControlFileLocation&> get_control_file(const std::string& src_name) const override;
+        std::vector<const SourceControlFileLocation*> load_all_control_files() const override;
 
     private:
-        const std::unordered_map <std::string, SourceControlFileLocation> &ports;
+        const std::unordered_map<std::string, SourceControlFileLocation>& ports;
     };
 
-    struct PathsPortFileProvider : Util::ResourceBase, PortFileProvider {
-        explicit PathsPortFileProvider(const vcpkg::VcpkgPaths &paths,
-                                       const std::vector <std::string> *ports_dirs_paths);
-
-        ExpectedS<const SourceControlFileLocation &> get_control_file(const std::string &src_name) const override;
-
-        std::vector<const SourceControlFileLocation *> load_all_control_files() const override;
+    struct PathsPortFileProvider : Util::ResourceBase, PortFileProvider
+    {
+        explicit PathsPortFileProvider(const vcpkg::VcpkgPaths& paths,
+                                       const std::vector<std::string>* ports_dirs_paths);
+        ExpectedS<const SourceControlFileLocation&> get_control_file(const std::string& src_name) const override;
+        std::vector<const SourceControlFileLocation*> load_all_control_files() const override;
 
     private:
-        Files::Filesystem &filesystem;
-        std::vector <fs::path> ports_dirs;
-        mutable std::unordered_map <std::string, SourceControlFileLocation> cache;
+        Files::Filesystem& filesystem;
+        std::vector<fs::path> ports_dirs;
+        mutable std::unordered_map<std::string, SourceControlFileLocation> cache;
     };
 }
