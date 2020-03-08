@@ -9,9 +9,9 @@ For short description of available commands, run `vcpkg help`.
 * Slack: [https://cpplang.now.sh/](https://cpplang.now.sh/), the #vcpkg channel
 * Docs: [Documentation](docs/index.md)
 
-| Windows (x86, x64, arm, uwp)  | MacOS | Linux |
-| ------------- | ------------- | ------------- |
-| [![Build Status](https://dev.azure.com/vcpkg/public/_apis/build/status/vcpkg-Windows-master-CI?branchName=master)](https://dev.azure.com/vcpkg/public/_build/latest?definitionId=9&branchName=master)  | [![Build Status](https://dev.azure.com/vcpkg/public/_apis/build/status/vcpkg-osx-master-CI?branchName=master)](https://dev.azure.com/vcpkg/public/_build/latest?definitionId=11&branchName=master) | [![Build Status](https://dev.azure.com/vcpkg/public/_apis/build/status/vcpkg-Linux-master-CI?branchName=master)](https://dev.azure.com/vcpkg/public/_build/latest?definitionId=6&branchName=master) |
+| Windows (Arm Raspberry)  |
+| ------------- |
+| [![Build Status](https://dev.azure.com/nitr021/vcpkg%20and%20WiringPi%20build%20test/_apis/build/status/vcpkg-Windows-master-CI?branchName=master)](https://dev.azure.com/vcpkg/public/_build/latest?definitionId=9&branchName=master) |
 
 ## Quick Start
 Prerequisites:
