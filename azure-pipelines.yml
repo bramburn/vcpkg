@@ -12,13 +12,13 @@ steps:
 - task: CmdLine@2
   displayName: Install ninja
   inputs:
-    script: 'apt-get install ninja'
+    script: 'sudo apt-get install ninja'
 - task: CmdLine@2
   inputs:
     script: |
-      apt-get install build-essential
-      apt-get install g++-arm-linux-gnueabihf
-      apt-get install gdb-multiarch
+      sudo apt-get install build-essential
+      sudo apt-get install g++-arm-linux-gnueabihf
+      sudo apt-get install gdb-multiarch
 - task: CmdLine@2
   inputs:
     script: './bootstrap-vcpkg.sh -useSystemBinaries'
