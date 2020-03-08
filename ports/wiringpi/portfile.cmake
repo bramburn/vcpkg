@@ -12,7 +12,7 @@ vcpkg_from_github(
         OUT_SOURCE_PATH SOURCE_PATH
         REPO bramburn/WiringPi
         REF 2.6.3
-        SHA512 d8bd44439100772929eb8a4eb4aebfd66fa54562c838eb4c081a382dc1d73c545faa6d9675e320864d9b533e4a0c4a673e44058c7f643ccd56ec90830cdfaf45
+        SHA512 5bd954f33ef564425e39c3a2f59d9dfe4598df625e53175b434632e212a454692196878993038412551104709b98fb8f21ad0a9c7299001a5cf3333194963be5
         HEAD_REF master
 )
 
@@ -22,6 +22,8 @@ set(CMAKE_C_COMPILER "/usr/bin/arm-linux-gnueabihf-gcc")
 
 ## Copy default files
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
+file(COPY ${CMAKE_CURRENT_LIST_DIR}/devLib/CMakeLists.txt DESTINATION ${SOURCE_PATH}/devLib)
+file(COPY ${CMAKE_CURRENT_LIST_DIR}/wiringPi/CMakeLists.txt DESTINATION ${SOURCE_PATH}/wiringPi)
 
 vcpkg_configure_cmake(
         SOURCE_PATH ${SOURCE_PATH}
@@ -33,6 +35,6 @@ vcpkg_install_cmake()
 
 # # Handle copyright
 file(INSTALL ${SOURCE_PATH}/COPYING.LESSER DESTINATION ${CURRENT_PACKAGES_DIR}/share/wiringpi/copyright)
-file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include)
+file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug)
 # # Post-build test for cmake libraries
 vcpkg_test_cmake(PACKAGE_NAME wiringpi)
