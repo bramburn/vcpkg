@@ -18,9 +18,13 @@ steps:
       sudo apt-get install g++-arm-linux-gnueabihf
       sudo apt-get install gdb-multiarch
 - task: CmdLine@2
-  displayName: Install ninja
   inputs:
-    script: 'sudo apt-get install ninja'
+    script: |
+      curl -Ls https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-linux.zip -o ninja-linux.zip
+                unzip ninja-linux.zip
+                sudo cp -v ninja /usr/local/bin/
+                sudo pip2 install virtualenv
+  displayName: Install ninja
 
 - task: CmdLine@2
   inputs:
