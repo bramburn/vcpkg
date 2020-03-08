@@ -9,10 +9,16 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 steps:
-  - task: CmdLine@2
-    displayName: Install ninja
-    inputs:
-      script: 'apt-get install ninja'
+- task: CmdLine@2
+  displayName: Install ninja
+  inputs:
+    script: 'apt-get install ninja'
+- task: CmdLine@2
+  inputs:
+    script: |
+      apt-get install build-essential
+      apt-get install g++-arm-linux-gnueabihf
+      apt-get install gdb-multiarch
 - task: CmdLine@2
   inputs:
     script: './bootstrap-vcpkg.sh -useSystemBinaries'
