@@ -89,7 +89,7 @@ namespace vcpkg::PortFileProvider
                 auto found_scf = Paragraphs::try_load_port(filesystem, ports_dir / spec);
                 if (auto scf = found_scf.get())
                 {
-                    if (scf->get()->core_paragraph->name == std::toLower(spec))
+                    if (std::toLower(scf->get()->core_paragraph->name) == spec)
                     {
                         auto it = cache.emplace(std::piecewise_construct,
                                                 std::forward_as_tuple(spec),
