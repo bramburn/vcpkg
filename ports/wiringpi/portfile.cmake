@@ -16,7 +16,7 @@ vcpkg_from_github(
         HEAD_REF master
 )
 
-
+#make sure we this is running
 set(CMAKE_CXX_COMPILER "/usr/bin/arm-linux-gnueabihf-g++")
 set(CMAKE_C_COMPILER "/usr/bin/arm-linux-gnueabihf-gcc")
 
@@ -27,7 +27,6 @@ vcpkg_configure_cmake(
         SOURCE_PATH ${SOURCE_PATH}
         OPTIONS_RELEASE -DINSTALL_HEADERS=ON
         OPTIONS_DEBUG -DINSTALL_HEADERS=OFF
-
 )
 
 vcpkg_install_cmake()
