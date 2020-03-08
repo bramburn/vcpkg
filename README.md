@@ -3,6 +3,8 @@
 ## Overview
 Vcpkg helps you manage C and C++ libraries on Windows, Linux and MacOS. This tool and ecosystem are constantly evolving; your involvement is vital to its success!
 
+This particular fork is purposely built for [**WiringPi**](https://github.com/bramburn/WiringPi) you can find more about our build in the link
+
 For short description of available commands, run `vcpkg help`.
 
 * Github: [https://github.com/microsoft/vcpkg](https://github.com/microsoft/vcpkg)
@@ -11,7 +13,7 @@ For short description of available commands, run `vcpkg help`.
 
 | Windows (Arm Raspberry)  |
 | ------------- |
-| [![Build Status](https://dev.azure.com/nitr021/vcpkg%20and%20WiringPi%20build%20test/_apis/build/status/vcpkg-Windows-master-CI?branchName=master)](https://dev.azure.com/vcpkg/public/_build/latest?definitionId=9&branchName=master) |
+| [![Build Status](https://dev.azure.com/nitr021/vcpkg%20and%20WiringPi%20build%20test/_apis/build/status/bramburn.vcpkg?branchName=master)](https://dev.azure.com/nitr021/vcpkg%20and%20WiringPi%20build%20test/_build/latest?definitionId=8&branchName=master) |
 
 ## Quick Start
 Prerequisites:

@@ -5,7 +5,7 @@ if (NOT VCPKG_TARGET_ARCHITECTURE STREQUAL "arm")
 endif ()
 
 ## define the toolchain file to
-#set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/armCMAKE.cmake)
+set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/armCMAKE.cmake)
 vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
 vcpkg_from_github(
@@ -17,10 +17,12 @@ vcpkg_from_github(
 )
 
 #make sure we this is running
+# we are using the arm gnu c and c++ compilers, make sure they are installed
+
 set(CMAKE_CXX_COMPILER "/usr/bin/arm-linux-gnueabihf-g++")
 set(CMAKE_C_COMPILER "/usr/bin/arm-linux-gnueabihf-gcc")
 
-## Copy default files
+## Copy default cmake files
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/devLib/CMakeLists.txt DESTINATION ${SOURCE_PATH}/devLib)
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/wiringPi/CMakeLists.txt DESTINATION ${SOURCE_PATH}/wiringPi)
@@ -35,6 +37,7 @@ vcpkg_install_cmake()
 
 # # Handle copyright
 file(INSTALL ${SOURCE_PATH}/COPYING.LESSER DESTINATION ${CURRENT_PACKAGES_DIR}/share/wiringpi/copyright)
+# Delete redundant debug/ folders
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug)
 # # Post-build test for cmake libraries
 vcpkg_test_cmake(PACKAGE_NAME wiringpi)
