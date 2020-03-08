@@ -4,7 +4,7 @@
 #include <vcpkg/base/util.h>
 #include <vcpkg/sourceparagraph.h>
 #include <vcpkg/vcpkgpaths.h>
-
+#include <cctype>
 
 namespace vcpkg::PortFileProvider
 {
