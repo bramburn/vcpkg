@@ -33,8 +33,6 @@ Linux:~/$ ./bootstrap-vcpkg.sh -useSystemBinaries
 ```
 
 
-
-
 Then, to hook up user-wide [integration](docs/users/integration.md), run (note: requires admin on first use)
 ```
 PS> .\vcpkg integrate install
@@ -47,35 +45,10 @@ PS> .\vcpkg install sdl2 curl
 Linux:~/$ ./vcpkg install sdl2 curl
 ```
 
-The best way to use installed libraries with CMake is via the toolchain file `scripts\buildsystems\vcpkg.cmake`. To use this file, you simply need to add it onto your CMake command line as `-DCMAKE_TOOLCHAIN_FILE=[vcpkg root]\scripts\buildsystems\vcpkg.cmake`.
-
-In Visual Studio, you can create a New Project (or open an existing one). All installed libraries are immediately ready to be `#include`'d and used in your project without additional configuration.
-
-For more information, see our [using a package](docs/examples/installing-and-using-packages.md) example for the specifics. If your library is not present in vcpkg catalog, you can open an [issue on the GitHub repo](https://github.com/microsoft/vcpkg/issues) where the dev team and the community can see it and potentially create the port file for this library.
-
-Additional notes on macOS and Linux support can be found in the [official announcement](https://blogs.msdn.microsoft.com/vcblog/2018/04/24/announcing-a-single-c-library-manager-for-linux-macos-and-windows-vcpkg/).
-
-## Tab-Completion / Auto-Completion
-`vcpkg` supports auto-completion of commands, package names, options etc in Powershell and bash. To enable tab-completion, use one of the following:
-```
-PS> .\vcpkg integrate powershell
-Linux:~/$ ./vcpkg integrate bash
-```
-and restart your console.
-
-
-## Examples
-See the [documentation](docs/index.md) for specific walkthroughs, including [installing and using a package](docs/examples/installing-and-using-packages.md), [adding a new package from a zipfile](docs/examples/packaging-zipfiles.md), and [adding a new package from a GitHub repo](docs/examples/packaging-github-repos.md).
-
-Our docs are now also available online at ReadTheDocs: <https://vcpkg.readthedocs.io/>!
-
-See a 4 minute [video demo](https://www.youtube.com/watch?v=y41WFKbQFTw).
-
 ## Contributing
 Vcpkg is built with your contributions. Here are some ways you can contribute:
 
-* [Submit Issues](https://github.com/Microsoft/vcpkg/issues) in vcpkg or existing packages
-* [Submit Fixes and New Packages](https://github.com/Microsoft/vcpkg/pulls)
+* [Submit Issues](https://github.com/bramburn/vcpkg/issues) in vcpkg or existing packages
 
 Please refer to our [Contribution guidelines](CONTRIBUTING.md) for more details.
 
@@ -111,6 +84,14 @@ Then you need to run the following code to install the system
 cd vcpkg
 ./bootstrap-vcpkg.sh -useSystemBinaries
 ```
+
+Every time you need to install a custom build for raspberryPI please use `arm-rasp` triplet like so
+```shell script
+
+./vcpkg install wiringpi:arm-rasp
+
+```
+The above command will install wiringpi with the arm GNU c/c++ compiler.
 
 ## Configuration
 
