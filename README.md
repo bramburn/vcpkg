@@ -26,9 +26,12 @@ To get started:
 > git clone https://github.com/Microsoft/vcpkg.git
 > cd vcpkg
 
-PS> .\bootstrap-vcpkg.bat
-Linux:~/$ ./bootstrap-vcpkg.sh
+PS> .\bootstrap-vcpkg.bat -useSystemBinaries
+Linux:~/$ ./bootstrap-vcpkg.sh -useSystemBinaries
 ```
+
+
+
 
 Then, to hook up user-wide [integration](docs/users/integration.md), run (note: requires admin on first use)
 ```
