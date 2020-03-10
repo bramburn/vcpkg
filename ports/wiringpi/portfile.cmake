@@ -39,5 +39,11 @@ vcpkg_install_cmake()
 file(INSTALL ${SOURCE_PATH}/COPYING.LESSER DESTINATION ${CURRENT_PACKAGES_DIR}/share/wiringpi/copyright)
 # Delete redundant debug/ folders
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug)
+
+if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
+    file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/bin" "${CURRENT_PACKAGES_DIR}/debug/bin")
+endif()
+
+
 # # Post-build test for cmake libraries
 vcpkg_test_cmake(PACKAGE_NAME wiringpi)
