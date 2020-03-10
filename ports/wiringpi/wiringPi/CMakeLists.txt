@@ -90,7 +90,7 @@ target_link_libraries(libwiringPi -lm -lpthread -lrt -lcrypt)
 set_target_properties(libwiringPi PROPERTIES OUTPUT_NAME "wiringPi")
 
 if (INSTALL_HEADERS)
-    install(FILES ${HEADER_FILES} DESTINATION include/wiringpi)
+    install(FILES ${HEADER_FILES} DESTINATION ${LIB_OUTPATH}include)
 endif ()
 
 message(STATUS "Installing the file at ${LIB_OUTPATH}${LIB_INSTALL_PATH}")
