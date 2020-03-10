@@ -9,7 +9,7 @@ project(WiringPiMain)
 #        LIBRARY DESTINATION lib
 #        ARCHIVE DESTINATION lib
 #        )
-set(LIB_OUTPATH wiringpi/)
+set(LIB_OUTPATH /)
 FILE(MAKE_DIRECTORY ${LIB_OUTPATH}lib)
 FILE(MAKE_DIRECTORY ${LIB_OUTPATH}include)
 FILE(MAKE_DIRECTORY ${LIB_OUTPATH}bin)
