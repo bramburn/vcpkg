@@ -21,7 +21,24 @@ Prerequisites:
 - Visual Studio 2015 Update 3 or newer (on Windows)
 - Git
 - gcc >= 7 or equivalent clang (on Linux)
+- Ninja
 - *Optional:* CMake 3.12.4
+
+### Pre-requisite
+
+You need to make sure you have ninja installed. Here is the code:
+
+```shell script
+
+git clone https://github.com/ninja-build/ninja.git
+cd ninja
+./configure.py --bootstrap
+
+sudo mv ninja /usr/local/bin
+
+
+```
+
 
 To get started:
 ```
@@ -162,4 +179,20 @@ find_path(wiringpi_INCLUDE_DIR wiringPi.h wiringPiI2C.h
         )
 
 MESSAGE(STATUS "The include folder for wiringpi is ${wiringpi_INCLUDE_DIR}")
+```
+
+
+## integration into clion or 
+
+Running the code below will give you the flags to add to your compiler
+```shell script
+
+./vcpkg integrate install
+
+```
+
+
+```
+
+-DCMAKE_TOOLCHAIN_FILE=/home/xxxx/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=arm-rasp
 ```
